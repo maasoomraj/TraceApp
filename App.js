@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Trace a Product</Text>
+      <Text>Enter Product Name</Text>
+      <TextInput placeholder="Product to be traced"></TextInput>
     </View>
   );
 }
