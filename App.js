@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { StyleSheet, Text, View, TextInput, Button,Alert, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
 
 export default class App extends Component {
   state = { product: '' , traceArray : [], isLoggedIn : true};
@@ -11,7 +11,7 @@ export default class App extends Component {
     traceProduct = () => {
         const { product } = this.state;
 
-        fetch('https://ancient-citadel-77688.herokuapp.com/api/trace', {
+        fetch('https://cors-anywhere.herokuapp.com/vast-thicket-16737.herokuapp.com/api/trace', {
             method: 'POST',
             headers: { 'Content-Type' : 'application/json' },
             body: JSON.stringify({product})
@@ -20,7 +20,7 @@ export default class App extends Component {
     }
 
   render(){
-    const {traceArray,isLoggedIn} = this.state;
+    const {traceArray} = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>Trace a Product</Text>
@@ -34,6 +34,9 @@ export default class App extends Component {
                   {traceArray.map(trace => <Text>{trace}</Text>)}
                   </FlatList>
         </View> }
+        { traceArray.length===0 &&
+          <Text>The Product is not found.</Text>
+        }
       </View>
     );
   }
